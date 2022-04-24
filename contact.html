@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <style>
+        body {
+        background-color: #cccccc;
+        text-align: center;
+        background-image: url("https://source.unsplash.com/1550x900/?startup");
+       
+    }
+    
+    .navbar {
+        background-color: #333333;
+    }
+    
+    a {
+        color: #f1f9f9;
+    }
+    
+    a:hover {
+        color: #f0f0f0;
+      }
+    </style>
+    
+<!-- component -->
+<div class='flex items-center justify-center min-h-screen from-teal-100 via-teal-300 to-teal-500 bg-gradient-to-br'>
+    <div class='w-full max-w-lg px-10 py-8 mx-auto bg-white rounded-lg shadow-xl'>
+        <div class='max-w-md mx-auto space-y-6'>
+
+            <form class="modal-content animate"   method="post"  name="google-sheet">
+                <h2 class="text-2xl font-bold ">Send a Request</h2>
+                <p class="my-4 opacity-70">Our team will Reach you within 3-hours.</p>
+                <hr class="my-6">
+                <label class="uppercase text-sm font-bold opacity-70">Name</label>
+                <input type="text" name="Name" class="p-3 mt-2 mb-4 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none">
+                <label class="uppercase text-sm font-bold opacity-70 ">Email</label>
+                <input type="text" name="Email" class="p-3 mt-2 mb-4 w-full bg-slate-200 rounded rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none" >
+                <label class="uppercase text-sm font-bold opacity-70 ">Phonenumber</label>
+                <input type="number" name="Phonenumber" class="p-3 mt-2 mb-4 w-full bg-slate-200 rounded rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none" >
+                <label class="uppercase text-sm font-bold opacity-70" name="Service">Service</label>
+                <select class="w-full p-3 mt-2 mb-4 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none" name="Service">
+                    <option value="Javascript">Javascript</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Python">Python</option>
+                    <option value="PHP">PHP</option>
+                    <option value="PHP">PHP</option>
+                </select>
+                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Message</label>
+
+                <textarea  name="Message" class="block w-full h-40 px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"></textarea>
+                <div class="my-2 font-medium opacity-70">
+                    <input type="checkbox">
+                    Subscribe and follow company updates.
+                </div>
+                <input type="submit" class="py-3 px-6 my-2 bg-emerald-500 text-white font-medium rounded bg-indigo-500 " value="Send">
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+  
+  
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwypeqxPLaAYI8WMpUtKo4TtAaUwPDLpU8pshwh09mRpBiNj-uCCmIral3UoNBJvtPxIQ/exec'
+              const form = document.forms['google-sheet']
+            
+              form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                  .then(response => alert('Success!', 'Unsubcribe Successfully'))
+                  
+                  .catch(error => console.error('Error!', error.message))
+              })
+        </script>
+</div>
+</body>
+</html>
+
